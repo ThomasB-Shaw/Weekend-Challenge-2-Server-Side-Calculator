@@ -2,3 +2,8 @@ body {
     background-color: #121212;
     color: whitesmoke;
 }
+
+#answerField {
+    margin-top: 25px;
+    font-size: xx-large;
+}

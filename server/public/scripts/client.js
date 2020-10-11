@@ -1,3 +1,4 @@
+
 console.log('Hello from JS');
 
 
@@ -13,11 +14,12 @@ function onReady() {
     $('#divideBtn').on('click', divideClick);
     $('#equalBtn').on('click', submitCalculation);
     $('#clearBtn').on('click', clearClick);
+    getHistory();
 } // End of onReady function
 
 
-// you left off on the below function
 
+// combinedDeal takes the inputs and combines them with the selected global modifier to come out with the answer
 function combinedDeal() {
     let answer = 0;
     if(modifier === "+"){
@@ -38,20 +40,36 @@ function combinedDeal() {
         return answer ;
     } else {
         alert("Please select a modifier!!!");
-    }
+    } // End of If chain, returns alert if modifier is not selected
 } // End of combinedDeal
 
 function submitCalculation(){
     let newCalculation = {
         input1: $('#inputOne').val(),
         input2: $('#inputTwo').val(),
+        modifier: modifier,
         answer: combinedDeal()
     }; // End of newCalculation object
-    if (modifier === '' || newCalculation.input1 === '' || newCalculation.input2 === '' || newClaculation.answer === '' ) {
+    if (modifier === '' || $('#inputOne').val() === '' || $('#inputTwo').val() === '' ) {
         alert('Please ensure all fields are filled out!');
         return ;
     } // End of if check, returns alert if invalid
     else {
+        $.ajax({
+            method: 'POST',
+            url: '/calcHistory',
+            data: {
+                input1: $('#inputOne').val(),
+                input2: $('#inputTwo').val(),
+                modifier: modifier,
+                answer: combinedDeal()
+            }
+        }).then(function(response){
+            console.log('response: ', response);
+            getHistory();
+        }).catch(function(error){
+            alert(error);
+        }); // End of post to server
 
     console.log(newCalculation);
     $('#answerField').text(`${newCalculation.answer}`);
@@ -87,3 +105,27 @@ function clearClick() {
     $('#inputTwo').val('');
     modifier = '' ;
 } // end of plusClick Function 
+
+
+function appendHistoryDOM(dataToAppend){
+    el = $('.historyList');
+    el.empty();
+    for (let i = 0; i < dataToAppend.length; i++) {
+        el.append(`<li>
+        ${dataToAppend.input1}
+        ${dataToAppend.input2}
+        ${dataToAppend.modifier}
+        ${dataToAppend.answer}
+        </li>`);
+    } // End of for loop checking CalcHistory to append to DOM
+} // end of appendHistoryDOM
+
+function getHistory() {
+    $.ajax({
+        method: 'GET',
+        url: '/calcHistory'
+    }).then(function(response){
+        console.log('response', response);
+        appendHistoryDOM(response);
+    });
+}
