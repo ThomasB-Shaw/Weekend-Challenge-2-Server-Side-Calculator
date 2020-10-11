@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 const calcHistory = require('./modules/history.js');
 
-app.get('/clacHistory', (req, res) => {
+app.get('/calcHistory', (req, res) => {
     res.send(calcHistory);
     console.log(calcHistory);
 });
