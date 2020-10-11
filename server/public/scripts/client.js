@@ -43,6 +43,7 @@ function combinedDeal() {
     } // End of If chain, returns alert if modifier is not selected
 } // End of combinedDeal
 
+// Runs the calculation, taking inputs and calculating out with the combinedDeal function
 function submitCalculation(){
     let newCalculation = {
         input1: $('#inputOne').val(),
@@ -78,6 +79,8 @@ function submitCalculation(){
     } // end of Else
 }
 
+
+// Cluster of button clicks that change the global modifier which will later be used to complete the calculation
 function plusClick() {
     modifier = '+' ;
     console.log(modifier);
@@ -95,7 +98,7 @@ function divideClick() {
     console.log(modifier);
 } // end of plusClick Function 
 
-
+// Two button click functions, one to run submitCalculation 
 function equalsClick() {
     submitCalculation();
 } // end of plusClick Function 
@@ -111,11 +114,12 @@ function appendHistoryDOM(dataToAppend){
     el = $('.historyList');
     el.empty();
     for (let i = 0; i < dataToAppend.length; i++) {
-        el.append(`<li>
-        ${dataToAppend.input1}
-        ${dataToAppend.input2}
-        ${dataToAppend.modifier}
-        ${dataToAppend.answer}
+        el.append(`<li class="history">
+        ${dataToAppend[i].input1}
+        ${dataToAppend[i].modifier}
+        ${dataToAppend[i].input2}
+        =
+        ${dataToAppend[i].answer}
         </li>`);
     } // End of for loop checking CalcHistory to append to DOM
 } // end of appendHistoryDOM

@@ -5,5 +5,9 @@ body {
 
 #answerField {
     margin-top: 25px;
+    font-size: 60px;
+}
+
+.history{
     font-size: xx-large;
 }
