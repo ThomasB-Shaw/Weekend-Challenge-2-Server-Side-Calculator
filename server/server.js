@@ -47,7 +47,6 @@ app.post('/math', (req, res) => {
     }
     calcHistory.push(answerObject);
     res.send(answerObject);
-    res.sendStatus(200);
     return answerObject;
 });
 
