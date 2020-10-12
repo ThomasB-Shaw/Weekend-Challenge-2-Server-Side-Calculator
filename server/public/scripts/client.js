@@ -1,5 +1,5 @@
 
-console.log('Hello from JS');
+
 
 
 $(document).ready(onReady);
@@ -23,7 +23,6 @@ function onReady() {
 function combinedDeal() {
     let answer = 0;
     if(modifier === "+"){
-        // answer = input1 + input2
         answer = Number($('#inputOne').val()) + Number($('#inputTwo').val());
         return answer ;
     } // adds input fields
@@ -74,6 +73,8 @@ function submitCalculation(){
 
     console.log(newCalculation);
     $('#answerField').text(`${newCalculation.answer}`);
+    $('#inputOne').val('');
+    $('#inputTwo').val()
     modifier = '';
     return newCalculation;
     } // end of Else
@@ -103,13 +104,12 @@ function equalsClick() {
     submitCalculation();
 } // end of plusClick Function 
 function clearClick() {
-    console.log('click');
     $('#inputOne').val('');
     $('#inputTwo').val('');
     modifier = '' ;
 } // end of plusClick Function 
 
-
+// function appends info from a module to the DOM, must be used with a GET request
 function appendHistoryDOM(dataToAppend){
     el = $('.historyList');
     el.empty();
@@ -124,6 +124,8 @@ function appendHistoryDOM(dataToAppend){
     } // End of for loop checking CalcHistory to append to DOM
 } // end of appendHistoryDOM
 
+
+//Get cache info from calcHistory, then appends it to the DOM
 function getHistory() {
     $.ajax({
         method: 'GET',
@@ -132,4 +134,4 @@ function getHistory() {
         console.log('response', response);
         appendHistoryDOM(response);
     });
-}
+} // End of getHistory
