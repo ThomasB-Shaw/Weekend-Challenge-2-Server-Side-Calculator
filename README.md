@@ -47,7 +47,7 @@ How does someone use this application? Tell a user story here.
 6. Hit the `C` button when you want to clear your inputs, and reset the modifier
 
 ## Acknowledgement
-Thanks to [Prime Digital Academy](www.primeacademy.io) who equipped and helped me to make this application a reality. (Thank your people)
+Thanks to [Prime Digital Academy](www.primeacademy.io) who equipped and helped me to make this application a reality.
 
 ## Support
 If you have suggestions or issues, please email me at [tbrookshaw13@gmail.com]
