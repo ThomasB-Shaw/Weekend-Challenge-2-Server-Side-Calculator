@@ -13,4 +13,11 @@
         [X] save info to the calc history
 [X] append answer to the DOM
 [X] append history to the DOM
-[] Clear history as well as inputs upon second click
+[X] Clear inputs on click
+
+### Stretch Goals
+    [] Make interface similar to a calc
+    [] Add a button to clear history 
+    [X] Only post if necessary input is ready
+    [] ReRun calculation from history on click
+    [] Deploy to Heroku!
