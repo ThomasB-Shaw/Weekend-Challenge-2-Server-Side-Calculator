@@ -25,15 +25,12 @@ app.post('/calcHistory', (req, res) => {
 
     if(modifier === "+"){
         answer = Number(inputA) + Number(inputB);
-        
     } // adds input fields
     else if (modifier === "-") {
         answer = Number(inputA) - Number(inputB);
-
     } // subtracts input fields
     else if (modifier === "*") {
         answer = Number(inputA) * Number(inputB);
-
     } // multiplies the fields
     else if (modifier === "/") {
         answer = Number(inputA) / Number(inputB);
@@ -51,6 +48,7 @@ app.post('/calcHistory', (req, res) => {
     }
     calcHistory.push(answerObject);
     res.sendStatus(200);
+    return answerObject;
 });
 
 app.listen(port, () => {

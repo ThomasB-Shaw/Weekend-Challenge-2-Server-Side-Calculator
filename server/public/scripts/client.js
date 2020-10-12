@@ -17,31 +17,6 @@ function onReady() {
     getHistory();
 } // End of onReady function
 
-
-
-// combinedDeal takes the inputs and combines them with the selected global modifier to come out with the answer
-// function combinedDeal() {
-//     let answer = 0;
-//     if(modifier === "+"){
-//         answer = Number($('#inputOne').val()) + Number($('#inputTwo').val());
-//         return answer ;
-//     } // adds input fields
-//     else if (modifier === "-") {
-//         answer = Number($('#inputOne').val()) - Number($('#inputTwo').val());
-//         return answer ;
-//     } // subtracts input fields
-//     else if (modifier === "*") {
-//         answer = Number($('#inputOne').val()) * Number($('#inputTwo').val());
-//         return answer ;
-//     } // multiplies the fields
-//     else if (modifier === "/") {
-//         answer = Number($('#inputOne').val()) / Number($('#inputTwo').val());
-//         return answer ;
-//     } else {
-//         alert("Please select a modifier!!!");
-//     } // End of If chain, returns alert if modifier is not selected
-// } // End of combinedDeal
-
 // Runs the calculation, taking inputs and calculating out with the combinedDeal function
 function submitCalculation(){
     let newCalculation = {
@@ -66,12 +41,13 @@ function submitCalculation(){
             }
         }).then(function(response){
             console.log('response: ', response);
+            let apAnswer = response.answer;
+            // console.log(response);
+            $('#answerField').text(`${apAnswer}`);
             getHistory();
         }).catch(function(error){
             alert(error);
         }); // End of post to server
-
-    console.log(answerObject);
 
     $('#inputOne').val('');
     $('#inputTwo').val()
@@ -113,9 +89,6 @@ function clearClick() {
 function appendHistoryDOM(dataToAppend){
     el = $('.historyList');
     el.empty();
-    Ael = $('#answerField')
-    Ael.empty();
-    Ael.text(`${dataToAppend[i].answer}`);
     for (let i = 0; i < dataToAppend.length; i++) {
         el.append(`<li class="history">
         ${dataToAppend[i].inputA}
