@@ -32,25 +32,17 @@ function submitCalculation(){
     else {
         $.ajax({
             method: 'POST',
-            url: '/calcHistory',
-            data: {
-                input1: $('#inputOne').val(),
-                input2: $('#inputTwo').val(),
-                modifier: modifier,
-                // answer: combinedDeal()
-            }
+            url: '/math',
+            data: newCalculation
+            
         }).then(function(response){
             console.log('response: ', response);
             let apAnswer = response.answer;
-            // console.log(response);
             $('#answerField').text(`${apAnswer}`);
             getHistory();
         }).catch(function(error){
             alert(error);
         }); // End of post to server
-
-    $('#inputOne').val('');
-    $('#inputTwo').val()
     modifier = '';
     return newCalculation;
     } // end of Else

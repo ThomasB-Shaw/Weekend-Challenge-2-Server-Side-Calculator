@@ -16,7 +16,7 @@ app.get('/calcHistory', (req, res) => {
     console.log(calcHistory);
 });
 
-app.post('/calcHistory', (req, res) => {
+app.post('/math', (req, res) => {
     console.log(req.body);
     let inputA = req.body.input1;
     let inputB = req.body.input2;
@@ -44,9 +44,9 @@ app.post('/calcHistory', (req, res) => {
         inputB: inputB,
         modifier: modifier,
         answer: answer
-
     }
     calcHistory.push(answerObject);
+    res.send(answerObject);
     res.sendStatus(200);
     return answerObject;
 });
