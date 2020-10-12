@@ -55,7 +55,7 @@ function combinedDeal() {
 } // End of combinedDeal
 
 function thirdEye(calcHistory) {
-    let serverCalc = {
+    let serverCalcNow = {
         input1: calcHistory.input1,
         input2: calcHistory.input2,
         modifier: calcHistory.modifier,
@@ -65,6 +65,7 @@ function thirdEye(calcHistory) {
         alert('Please ensure all fields are filled out!');
         return ;
     } else {
-
+        serverCalc.push(serverCalcNow);
     }
 }
+thirdEye(calcHistory);

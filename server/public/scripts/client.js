@@ -48,7 +48,7 @@ function submitCalculation(){
         input1: $('#inputOne').val(),
         input2: $('#inputTwo').val(),
         modifier: modifier,
-        answer: combinedDeal()
+        // answer: combinedDeal()
     }; // End of newCalculation object
     if (modifier === '' || $('#inputOne').val() === '' || $('#inputTwo').val() === '' ) {
         alert('Please ensure all fields are filled out!');
@@ -62,19 +62,18 @@ function submitCalculation(){
                 input1: $('#inputOne').val(),
                 input2: $('#inputTwo').val(),
                 modifier: modifier,
-                answer: combinedDeal()
+                // answer: combinedDeal()
             }
         }).then(function(response){
             console.log('response: ', response);
-            getHistory();
+            getCalculation();
         }).catch(function(error){
             alert(error);
         }); // End of post to server
 
     console.log(newCalculation);
-    $('#answerField').text(`${newCalculation.answer}`);
-    $('#inputOne').val('');
-    $('#inputTwo').val()
+    // $('#answerField').text(`${newCalculation.answer}`);
+
     modifier = '';
     return newCalculation;
     } // end of Else
@@ -135,3 +134,13 @@ function getHistory() {
         appendHistoryDOM(response);
     });
 } // End of getHistory
+
+function getCalculation() {
+    $.ajax({
+        method: 'GET',
+        url: '/serverCalc'
+    }).then(function(response){
+        console.log('response', response);
+        appendHistoryDOM(response);
+    });
+}
