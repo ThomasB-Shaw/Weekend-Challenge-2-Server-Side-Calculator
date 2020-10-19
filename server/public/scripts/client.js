@@ -97,7 +97,7 @@ function appendHistoryDOM(dataToAppend){
 function getHistory() {
     $.ajax({
         method: 'GET',
-        url: '/calcHistory'
+        url: '/math'
     }).then(function(response){
         console.log('response', response);
         appendHistoryDOM(response);
